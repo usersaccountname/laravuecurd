@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'students',
+        'passwords' => 'students',
     ],
 
     /*
@@ -40,6 +40,24 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'students' => [
+            'driver' => 'session',
+            'provider' => 'students',
+        ],
+
+        'instructors' => [
+            'driver' => 'session',
+            'provider' => 'instructors',
+        ],
+        'directors' => [
+            'driver' => 'session',
+            'provider' => 'directors',
+        ],
+        // 'api' => [
+        //     'driver' => 'token',
+        //     'provider' => 'students',
+        // ],
     ],
 
     /*
@@ -60,15 +78,25 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'web' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Director::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'students' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Student::class,
+        ],
+
+        'instructors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Instructor::class,
+        ],
+
+        'directors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Director::class,
+        ],
     ],
 
     /*

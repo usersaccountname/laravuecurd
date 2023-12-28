@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.minion')
 
 @section('content')
-    <div id="app-app">
-        This is the Demo Page!!!
+    <div id="app">
+        
     </div>
     <script src="{{ mix('js/app.js') }}"></script>
 @endsection

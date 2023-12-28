@@ -1,22 +1,29 @@
 <template>
-    <main>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <router-link to="/" class="navbar-brand" href="#"> Laravel 9 Vue 3 CRUD Example - Techsolutionstuff</router-link>
-                <div class="collapse navbar-collapse">
-                    <div class="navbar-nav">
-                        <router-link exact-active-class="active" to="/" class="nav-item nav-link">Home</router-link>
-                        <router-link exact-active-class="active" to="/category" class="nav-item nav-link">Category</router-link>
+
+    <!-- <div class="container py-4"> -->
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Students</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">View student information and schedules.</p>
+                        <a href=" {{ route('students.index') }}" class="btn btn-primary">Go to Students</a>
                     </div>
                 </div>
             </div>
-        </nav>
-        <div class="container mt-5">
-            <router-view></router-view>
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Instructors</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">View instructor information and schedules.</p>
+                        <a href="{{ route('instructors.index') }}" class="btn btn-primary">Go to Instructors</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </main>
+    <!-- </div> -->
 </template>
-
-<script>
-    export default {}
-</script>
