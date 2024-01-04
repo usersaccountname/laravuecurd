@@ -29,6 +29,7 @@
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i></div>
+        <h1 class="mt-5">Welcome to the Student Dashboard, {{ ucfirst(auth()->user()->first_name) }}!</h2>
         <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""><i class='bx bxs-user-circle mt-2 mx-5' id="header-toggle"></i></div>
     </header>
     <div class="l-navbar" id="nav-bar">
@@ -63,10 +64,10 @@
                         <i class='bx bx-list-plus nav_icon'></i>
                         <span class="nav_name">Enrolls</span>
                     </a>
-                    <a href="/directors" class="nav_link">
+                    <!-- <a href="/directors" class="nav_link">
                         <i class='bx bx-user-plus nav_icon'></i>
                         <span class="nav_name">Enrolls</span>
-                    </a>
+                    </a> -->
                 </div>
             </div>
             <a href="{{ route('dlogout') }}" class="nav_link">

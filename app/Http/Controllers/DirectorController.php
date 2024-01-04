@@ -96,7 +96,7 @@ class DirectorController extends Controller
 
         if (Auth::guard('directors')->attempt($credentials)) {
             // Authentication passed
-            return redirect()->intended('/dirctr_dashboard');
+            return redirect()->intended('/admindash');
         } else {
             // Authentication failed
             return back()->withErrors(['username' => 'Invalid credentials']);

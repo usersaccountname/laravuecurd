@@ -23,11 +23,12 @@ class Authenticate extends Middleware
                 return route('slogin');
             case 'instructors':
                 return route('ilogin');
-            // case 'directors':
-            //     return route('dlogin');
-            default:
-                // return route('login');
+            case 'directors':
                 return route('dlogin');
+            default:
+                // // return route('login');
+                return route('dlogin');
+                // return route('slogin');
         }
     }
 

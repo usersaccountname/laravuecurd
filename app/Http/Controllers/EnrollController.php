@@ -64,8 +64,29 @@ class EnrollController extends Controller
             'validated' => $request->input('validated'),
         ]);
 
+         // Update the Section slots and enrollee columns
+         $this->updateSection($request->input('section_id'));
+
         return redirect()->route('enrolls.index')->with('success', 'Enroll created successfully!');
     }
+
+
+    // New method to update Section slots and enrollee
+    private function updateSection($sectionId)
+    {
+        // Find the Section
+        $section = Section::findOrFail($sectionId);
+
+        // Check if there are available slots before updating
+        if ($section->slots > 0) {
+            // Update the Section slots and enrollee columns
+            $section->update([
+                'slots' => $section->slots - 1,
+                'enrollee' => $section->enrollee + 1,
+            ]);
+        }
+    }
+
 
     public function show(Enroll $enroll)
     {

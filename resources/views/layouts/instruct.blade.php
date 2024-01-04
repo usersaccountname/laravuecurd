@@ -40,15 +40,15 @@
                     <span class="nav_logo-name">Community School</span>
                 </a>
                 <div class="nav_list">
-                    <a href="/" class="nav_link">
+                    <a href="/i_dash" class="nav_link">
                         <i class='bx bx-grid-alt nav_icon'></i>
                         <span class="nav_name">Dashboard</span>
                     </a>
-                    <a href="/schedules" class="nav_link">
+                    <a href="/i_scheds" class="nav_link">
                         <i class='bx bx-list-ol nav_icon'></i>
                         <span class="nav_name">Schedules</span>
                     </a>
-                    <a href="/salary" class="nav_link">
+                    <a href="/salaries" class="nav_link">
                         <i class='bx bx-list-ol nav_icon'></i>
                         <span class="nav_name">Salaries</span>
                     </a>

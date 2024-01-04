@@ -17,19 +17,40 @@ class InstructController extends Controller
 
     public function schedules(Request $request)
     {
-        $sections = Section::all();
         $courses = Course::all();
 
-        $semester = $request->input('semester');
-        $schoolYear = $request->input('school_year');
 
-        // Use a query builder to filter sections by semester and school year
-        $sections = Section::when($semester, function ($query) use ($semester) {
-            $query->where('semester', $semester);
-        })->when($schoolYear, function ($query) use ($schoolYear) {
-            $query->where('school_year', $schoolYear);
-        })->get();
-        return view('instructors.index', compact('sections', 'courses'));
+        // Get the currently authenticated student's ID
+        $instructor_id = Auth::id();
+// echo $instructor_id;
+        $semester = $request->input('semester');
+        $school_year = $request->input('school_year');
+
+        // // Use a query builder to filter sections by semester and school year
+        $sections = Section::where('instructor_id', $instructor_id)
+        ->where('semester', $semester)
+        ->where('school_year', $school_year)
+        ->get();
+            // echo $sections;
+        return view('teachers.index', compact('sections', 'courses'));
+    }
+
+    public function salaries(Request $request)
+    {
+        $courses = Course::all();
+        // Get the currently authenticated instructor's ID
+        $instructor_id = Auth::id();
+
+        $semester = $request->input('semester');
+        $school_year = $request->input('school_year');
+
+        // Use the Section query to get the instructor's sections and related information
+        $sections = Section::where('instructor_id', $instructor_id)
+        ->where('semester', $semester)
+        ->where('school_year', $school_year)
+        ->get();
+        // echo $sections;
+        return view('teachers.salary', compact('sections','courses'));
     }
 
     public function showLoginForm(Request $request)
@@ -50,7 +71,7 @@ class InstructController extends Controller
 
         if (Auth::guard('instructors')->attempt($credentials)) {
             // Authentication passed
-            return redirect()->intended('/instrct_dashboard');
+            return redirect()->intended('/i_dash');
         } else {
             // Authentication failed
             return back()->withErrors(['username' => 'Invalid credentials']);

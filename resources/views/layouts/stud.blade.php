@@ -28,19 +28,19 @@
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i></div>
         <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""><i class='bx bxs-user-circle mt-2 mx-5' id="header-toggle"></i></div>
     </header>
-    <div class="l-navbar" id="nav-bar">
+    <div class="l-navbar" id="student-nav-bar">
         <nav class="nav">
             <div>
-                <a href="#" class="nav_logo">
+                <a href="/" class="nav_logo">
                     <i class='bx bx-layer nav_logo-icon'></i>
                     <span class="nav_logo-name">Community School</span>
                 </a>
                 <div class="nav_list">
-                    <a href="/" class="nav_link">
+                    <a href="/s_dash" class="nav_link">
                         <i class='bx bx-grid-alt nav_icon'></i>
                         <span class="nav_name">Dashboard</span>
                     </a>
-                    <a href="/schedules" class="nav_link">
+                    <a href="/s_scheds" class="nav_link">
                         <i class='bx bx-list-ol nav_icon'></i>
                         <span class="nav_name">Schedules</span>
                     </a>
@@ -67,46 +67,46 @@
     </div>
     <!--Container Main end-->
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function(event) {
+    <!-- Update the event listeners for the student blade -->
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        const showNavbar = (toggleId, navId, bodyId, headerId) => {
+            const toggle = document.getElementById(toggleId),
+                nav = document.getElementById(navId),
+                bodypd = document.getElementById(bodyId),
+                headerpd = document.getElementById(headerId);
 
-        const showNavbar = (toggleId, navId, bodyId, headerId) =>{
-        const toggle = document.getElementById(toggleId),
-        nav = document.getElementById(navId),
-        bodypd = document.getElementById(bodyId),
-        headerpd = document.getElementById(headerId)
+            // Validate that all variables exist
+            if (toggle && nav && bodypd && headerpd) {
+                toggle.addEventListener('click', () => {
+                    // show navbar
+                    nav.classList.toggle('show');
+                    // change icon
+                    toggle.classList.toggle('bx-x');
+                    // add padding to body
+                    bodypd.classList.toggle('body-pd');
+                    // add padding to header
+                    headerpd.classList.toggle('body-pd');
+                });
+            }
+        };
 
-        // Validate that all variables exist
-        if(toggle && nav && bodypd && headerpd){
-        toggle.addEventListener('click', ()=>{
-        // show navbar
-        nav.classList.toggle('show')
-        // change icon
-        toggle.classList.toggle('bx-x')
-        // add padding to body
-        bodypd.classList.toggle('body-pd')
-        // add padding to header
-        headerpd.classList.toggle('body-pd')
-        })
-        }
-        }
-
-        showNavbar('header-toggle','nav-bar','body-pd','header')
+        showNavbar('student-header-toggle', 'student-nav-bar', 'body-pd', 'header');
 
         /*===== LINK ACTIVE =====*/
-        const linkColor = document.querySelectorAll('.nav_link')
+        const linkColor = document.querySelectorAll('.nav_link');
 
-        function colorLink(){
-        if(linkColor){
-        linkColor.forEach(l=> l.classList.remove('active'))
-        this.classList.add('active')
+        function colorLink() {
+            if (linkColor) {
+                linkColor.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            }
         }
-        }
-        linkColor.forEach(l=> l.addEventListener('click', colorLink))
 
-            // Your code to run since DOM is loaded and ready
-        });
-    </script>
+        linkColor.forEach(l => l.addEventListener('click', colorLink));
+    });
+</script>
+
 
 
     <!-- Bootstrap JavaScript and dependencies -->
@@ -154,6 +154,10 @@
             // Your code to run since DOM is loaded and ready
         });
     </script>
+
+      <!-- Bootstrap JavaScript and dependencies -->
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>

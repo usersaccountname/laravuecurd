@@ -73,7 +73,9 @@ class StudController extends Controller
     public function showLoginForm(Request $request)
     {
         $username = $request->input('username');
+
         return view('auth.slogin', compact('username'));
+
     }
 
     public function slogin(Request $request)
@@ -83,35 +85,19 @@ class StudController extends Controller
             'username' => 'required',
             'password' => 'required',
         ]);
-        // Attempt to authenticate the user
-        // $user = Student::where('username', $request->username)->first();
-
-        // if ($user && $this->verifyMcryptPassword($request->password, $user->password)) {
-        //     // Authentication successful
-        //     auth()->login($user);
-        //     return redirect('/dashboard'); // Change the redirect path as needed
-        // }
-
-        // // Authentication failed
-        // return back()->withErrors(['username' => 'Invalid credentials']);
 
 
             $credentials = $request->only('username', 'password');
 
             if (Auth::guard('students')->attempt($credentials)) {
                 // Authentication passed
-                return redirect()->intended('/studnt_dashboard');
-            } else {
+                return redirect()->intended('/s_dash');
+            }
+            else {
                 // Authentication failed
                 return back()->withErrors(['username' => 'Invalid credentials']);
             }
 
-    }
-
-    // Helper function to verify mcrypt hashed password
-    private function verifyMcryptPassword($password, $hashedPassword)
-    {
-        return hash_equals($hashedPassword, crypt($password, $hashedPassword));
     }
 
 

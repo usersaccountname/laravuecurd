@@ -23,6 +23,8 @@
                             <th>Code</th>
                             <th>Description</th>
                             <th>Fee Price</th>
+                            <th>Created at</th>
+                            <th>Updated at</th>
                             <th class="px-5"><text class="float-end mx-5">Actions</text></th>
                         </tr>
                     </thead>
@@ -32,6 +34,8 @@
                                 <td>{{ $course->course_code }}</td>
                                 <td>{{ $course->course_desc }}</td>
                                 <td>{{ $course->price }}</td>
+                                <td>{{ $course->created_at }}</td>
+                                <td>{{ $course->updated_at }}</td>
                                 <!-- Add more columns as needed -->
                                 <td class="px-5">
                                     <!-- Add buttons for actions (e.g., edit, delete) -->

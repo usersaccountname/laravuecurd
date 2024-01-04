@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f0f2f5;
+            background-color: black;
         }
         .container {
             display: flex;
@@ -21,6 +21,8 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px; /* Set a max-width to prevent the form from becoming too wide on larger screens */
+            width: 100%;
         }
         .login-logo {
             text-align: center;
@@ -31,7 +33,7 @@
         }
         .form-control {
             margin-bottom: 15px;
-            font-size: 20px; /* Adjust the font size as needed */
+            font-size: 15px; /* Adjust the font size as needed */
         }
         .btn-primary {
             background-color: #1877f2;
@@ -44,6 +46,16 @@
         }
         .button-container {
             text-align: center;
+        }
+
+        @media (max-width: 576px) {
+            /* Adjust styles for small screens (e.g., smartphones) */
+            .container {
+                padding: 10px;
+            }
+            .login-form {
+                padding: 15px;
+            }
         }
     </style>
 </head>

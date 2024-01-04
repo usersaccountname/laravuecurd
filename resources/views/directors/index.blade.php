@@ -36,7 +36,7 @@
                         @foreach($directors as $director)
                             <tr>
                                 <td>{{ $director->id }}</td>
-                                <td>{{ ucfirst(auth()->user()->first_name) }} {{ ucfirst(auth()->user()->last_name) }}</td>
+                                <td>{{ ucfirst($director->first_name) }} {{ ucfirst($director->last_name) }}</td>
                                 <!-- <td>{{ $director->email }}</td> -->
                                 <td>{{ $director->created_at }}</td>
                                 <td>{{ $director->updated_at }}</td>

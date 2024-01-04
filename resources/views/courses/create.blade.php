@@ -21,7 +21,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="price" class="form-label">Course Fee</label>
-                        <input type="text" name="price" id="price" class="form-control" required>
+                        <input type="number" name="price" id="price" class="form-control" required>
                     </div>
                     <!-- Add more fields as needed -->
                     <button type="submit" class="btn btn-primary">Add Course</button>

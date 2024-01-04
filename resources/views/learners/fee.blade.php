@@ -7,7 +7,7 @@
                 <h2>Fees</h2>
             </div>
             <div class="card-body">
-                <form action="{{ route('fees') }}" method="GET" class="float-end" id="filterForm">
+                <form action="{{ route('learners.fees') }}" method="GET" class="float-end" id="filterForm">
                     <div class="row">
                         <div class="col-md-6">
                             <label for="school_year" class="form-label">Select School Year:</label>
@@ -43,6 +43,9 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @php
+                        $totalPrice = 0; // Initialize total price variable
+                    @endphp
                     @foreach($enrolls as $enroll)
                             <tr>
                                 <td>{{ $enroll->id }}</td>
@@ -70,13 +73,16 @@
                                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this enroll?')">Delete</button>
                                     </form>
                                 </td> -->
-                                <td>
+                                <td class="text-end">
                                     @foreach($sections as $section)
                                         @if($enroll->section_id == $section->id)
 
                                             @foreach($courses as $course)
                                                 @if($section->course_id == $course->id)
                                                     {{ $course->price }}
+                                                    @php
+                                                        $totalPrice += $course->price; // Update total price
+                                                    @endphp
                                                 @endif
                                             @endforeach
                                         @endif
@@ -84,11 +90,11 @@
                                 </td>
                             </tr>
                         @endforeach
+                            <tr>
+                                <th colspan="4"></th>
+                                <th class="text-end"> Total: ${{ $totalPrice }}</th>
+                            </tr>
 
-                        <!-- <tr>
-                            <th colspan="6"></th>
-                            <th> $total.price </th>
-                        </tr> -->
                     </tbody>
                 </table>
 

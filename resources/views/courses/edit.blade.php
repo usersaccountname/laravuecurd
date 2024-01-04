@@ -22,7 +22,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="price" class="form-label">Course Fee</label>
-                        <input type="text" name="price" id="price" class="form-control" value="{{ $course->price }}"  required>
+                        <input type="n" name="price" id="price" class="form-control" value="{{ $course->price }}"  required>
                     </div>
                     <!-- Add more fields as needed -->
                     <button type="submit" class="btn btn-primary">Update Course</button>

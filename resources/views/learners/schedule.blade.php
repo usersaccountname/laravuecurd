@@ -7,7 +7,7 @@
                 <h2>Schedules</h2>
             </div>
             <div class="card-body">
-                <form action="{{ route('schedules') }}" method="GET" class="float-end" id="filterForm">
+                <form action="{{ route('learners.schedules') }}" method="GET" class="float-end" id="filterForm">
                     <div class="row">
                         <div class="col-md-6">
                             <label for="school_year" class="form-label">Select School Year:</label>

@@ -54,7 +54,7 @@ class CourseController extends Controller
         $request->validate([
             'course_code' => 'required|unique:courses,course_code,' . $course->id,
             'course_desc' => 'required',
-            'fee_price' => 'required',
+            'price' => 'required',
             // Add other validation rules as needed
         ]);
 

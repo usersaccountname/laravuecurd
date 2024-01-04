@@ -25,58 +25,38 @@ use App\Http\Controllers\DirectorController;
 // Auth::routes();
 
 
-
-Route::resource('learners', StudController::class);
-
-Route::resource('directors', DirectorController::class);
-
-
-
+// Instructor routes
+Route::resource('teachers', InstructController::class);
 Route::middleware(['auth:instructors'])->group(function () {
-    // Student routes
-    Route::get('/instrct_dashboard', [InstructController::class, 'index'])->name('dashboard');
-
-    Route::get('/instrct_main', [InstructController::class, 'index'])->name('home');
+    Route::get('/i_dash', [InstructController::class, 'index'])->name('teachers.dashboard');
+    Route::get('/main', [InstructController::class, 'index'])->name('teachers.home');
+    Route::get('/i_scheds', [InstructController::class, 'schedules'])->name('teachers.schedules');
+    Route::get('/salaries', [InstructController::class, 'salaries'])->name('teachers.salaries');
 });
 
-
+// Student routes
+Route::resource('learners', StudController::class);
 Route::middleware(['auth:students'])->group(function () {
-    // Student routes
-    Route::get('/studnt_dashboard', [StudController::class, 'index'])->name('dashboard');
-
-
-    Route::get('/studnt_main', [StudController::class, 'index'])->name('home');
-
-    Route::get('/schedules', [StudController::class, 'schedules'])->name('schedules');
-    Route::get('/fees', [StudController::class, 'fees'])->name('fees');
+    Route::get('/s_dash', [StudController::class, 'index'])->name('learners.dashboard');
+    Route::get('/main', [StudController::class, 'index'])->name('learners.home');
+    Route::get('/s_scheds', [StudController::class, 'schedules'])->name('learners.schedules');
+    Route::get('/fees', [StudController::class, 'fees'])->name('learners.fees');
 });
 
-
-
+// Director routes
+Route::resource('directors', DirectorController::class);
+// Route::middleware(['auth:directors', 'prefix' => 'directors'])->group(function () {
 Route::middleware(['auth:directors'])->group(function () {
-    // Student routes
-    Route::get('/dirctr_dashboard', [DirectorController::class, 'index'])->name('dashboard');
-
-
-    Route::get('/admin', [DirectorController::class, 'index'])->name('home');
-
-    // Route::get('/dirctr_main', [DirectorController::class, 'index'])->name('home');
-
-    // Course routes
+    Route::get('/admindash', [DirectorController::class, 'index'])->name('director.dashboard');
+    Route::get('/admin', [DirectorController::class, 'index'])->name('director.home');
+    // Add more director-specific routes if needed
     Route::resource('courses', CourseController::class);
-    // Instructor routes
     Route::resource('instructors', InstructorController::class);
-    // Section routes
     Route::resource('sections', SectionController::class);
-    // Student routes
     Route::resource('students', StudentController::class);
-    // Enroll routes
     Route::resource('enrolls', EnrollController::class);
-    // Route::get('enrolls/{id}/fetchEnrolledSubjects', [EnrollController::class, 'fetchEnrolledSubjects'])->name('enrolls.fetchEnrolledSubjects');
-    Route::resource('directors', DirectorController::class);
-
-
 });
+
 
 
 
